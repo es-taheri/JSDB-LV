@@ -1,0 +1,49 @@
+{
+    "name": "estaheri/jsondb-lv",
+    "version":"v1.0-beta",
+    "type": "library",
+    "keywords": [
+        "jsondb",
+        "jsondb-lv",
+        "jsondb library version",
+        "jsondb lv",
+        "database",
+        "nosql database",
+        "nosql",
+        "web service",
+        "database api",
+        "jsondb host version",
+        "jsondb-hv",
+        "jsondb hv",
+        "jsondb server version",
+        "jsondb-sv",
+        "jsondb sv"
+    ],
+    "homepage": "https://github.com/es-taheri/jsondb-lv",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Esmaeil Taheri",
+            "email": "ta.es1383@gmail.com",
+            "homepage": "http://github.com/es-taheri",
+            "role": "Developer"
+        }
+    ],
+    "description": "A php composer package for an easier way to connect and use jsondb",
+    "require": {
+        "php": ">=8.1.0",
+        "ext-curl": "*",
+        "ext-json": "*"
+    },
+    "autoload": {
+        "psr-4": {
+            "JSONDB\\lib\\json": "lib/",
+            "JSONDB\\lib\\CURL": "lib/",
+            "JSONDB\\lib\\connect": "lib/",
+            "JSONDB\\request\\user": "",
+            "JSONDB\\request\\database": "",
+            "JSONDB\\request\\base": "",
+            "JSONDB\\request\\datacenter": ""
+        }
+    }
+}
