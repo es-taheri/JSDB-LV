@@ -37,13 +37,8 @@
     },
     "autoload": {
         "psr-4": {
-            "JSONDB\\lib\\json\\": "lib/",
-            "JSONDB\\lib\\CURL\\": "lib/",
-            "JSONDB\\lib\\connect\\": "lib/",
-            "JSONDB\\request\\user\\": "",
-            "JSONDB\\request\\database\\": "",
-            "JSONDB\\request\\base\\": "",
-            "JSONDB\\request\\datacenter\\": ""
+            "JSONDB\\lib\\": "lib/",
+            "JSONDB\\request\\": "",
         }
     }
 }
