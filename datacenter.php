@@ -1,10 +1,25 @@
 <?php
 namespace JSONDB\request;
+
 use JSONDB\lib\connect;
 use JSONDB\lib\json;
-
+/**
+ * send base section request to jsondb server/host by curl
+ * 
+ * This Class send asynchronously requests to jsondb server/host base section with "connect" class
+ * 
+ * @package    JSONDB-LV
+ * @version    Release: v1.0-beta
+ * @license    https://raw.githubusercontent.com/es-taheri/JSONDB-LV/JSONDB/LICENSE  MIT License
+ * @link       https://github.com/es-taheri/JSONDB-LV#datacenter-requests
+ */
 class datacenter{
     public string $output='array';
+    /**
+     * initializing session id and creating connection to server
+     *
+     * @param string $output
+     */
     public function __construct(string $output='array')
     {
         $this->output=$output;
@@ -17,6 +32,17 @@ class datacenter{
             $_ENV['JSONDB_proxy'],
         );
     }
+    /**
+     * replace/add data to record(s)
+     *
+     * @param string|array $object              name of data you want to add/update to record(s)
+     * @param string|array $value               value of data you want to add/update to record(s)
+     * @param string|array|null $where_object   filter records data name
+     * @param string|array|null $where_value    filter records data value
+     * @param integer|null $limit               limit number of records should update
+     * @return array|json|object                returned data depends on your output selection in illuminating class (more details in link)
+     * @link https://github.com/es-taheri/JSONDB-LV#replace-record
+     */
     public function replace(string|array $object,string|array $value,string|array|null $where_object=null,string|array|null $where_value=null,int $limit=null)
     {
         if(is_array($object))$object=json::_out($object);
@@ -32,6 +58,16 @@ class datacenter{
         ],'POST',['x-s-auth'=>$this->session_id]);
         return self::output($result,$this->output);
     }
+    /**
+     * receive data from record(s)
+     *
+     * @param string|array $object              name of data you want to receive from record(s)
+     * @param string|array|null $where_object   filtering records by  data name
+     * @param string|array|null $where_value    filtering records by  data value
+     * @param integer|null $limit               limit number of records to update
+     * @return array|json|object                returned data depends on your output selection in illuminating class (more details in link)
+     * @link https://github.com/es-taheri/JSONDB-LV#receive-record
+     */
     public function receive(string|array $object,string|array|null $where_object=null,string|array|null $where_value=null,int $limit=null)
     {
         if(is_array($object))$object=json::_out($object);
@@ -45,6 +81,14 @@ class datacenter{
         ],'POST',['x-s-auth'=>$this->session_id]);
         return self::output($result,$this->output);
     }
+    /**
+     * add a record
+     *
+     * @param string|array $object      name of data(s) you want to add
+     * @param string|array $value       value of data(s) you want to add
+     * @return array|json|object        returned data depends on your output selection in illuminating class (more details in link)
+     * @link https://github.com/es-taheri/JSONDB-LV#add-record
+     */
     public function add(string|array $object,string|array $value)
     {
         if(is_array($object))$object=json::_out($object);
@@ -55,6 +99,16 @@ class datacenter{
         ],'POST',['x-s-auth'=>$this->session_id]);
         return self::output($result,$this->output);
     }
+    /**
+     * delete record(s)
+     *
+     * @param integer|array|string $id         id of record(s) you want to delete (if you want to delete all or delete by filtering set "*")
+     * @param string|array|null $where_object  filtering records by  data name
+     * @param string|array|null $where_value   filtering records by  data value
+     * @param integer|null $limit              limit number of records to delete
+     * @return array|json|object               returned data depends on your output selection in illuminating class (more details in link)
+     * @link https://github.com/es-taheri/JSONDB-LV#delete-record
+     */
     public function delete(int|array|string $id,string|array|null $where_object=null,string|array|null $where_value=null,int $limit=null)
     {
         if(is_array($id))$id=json::_out($id);
@@ -68,6 +122,16 @@ class datacenter{
         ],'POST',['x-s-auth'=>$this->session_id]);
         return self::output($result,$this->output);
     }
+    /**
+     * remove data from record(s)
+     *
+     * @param string|array $object              name of data you want to remove from record(s)
+     * @param string|array|null $where_object   filtering records by  data name
+     * @param string|array|null $where_value    filtering records by  data value
+     * @param integer|null $limit               limit number of records to remove
+     * @return array|json|object                returned data depends on your output selection in illuminating class (more details in link)
+     * @link https://github.com/es-taheri/JSONDB-LV#remove-record
+     */
     public function remove(string|array $object,string|array|null $where_object=null,string|array|null $where_value=null,int $limit=null)
     {
         if(is_array($object))$object=json::_out($object);

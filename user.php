@@ -4,13 +4,31 @@ namespace JSONDB\request;
 use JSONDB\lib\connect;
 use JSONDB\lib\CURL;
 use JSONDB\lib\json;
-
+/**
+ * send user section request to jsondb server/host by curl
+ * 
+ * This Class send asynchronously requests to jsondb server/host user section with "connect" class
+ * 
+ * @package    JSONDB-LV
+ * @version    Release: v1.0-beta
+ * @license    https://raw.githubusercontent.com/es-taheri/JSONDB-LV/JSONDB/LICENSE  MIT License
+ * @link       https://github.com/es-taheri/JSONDB-LV#user-requests
+ */
 class user{
     public string $username;
     public string $password='';
     public string $output='array';
     private const _SSDIR_=__DIR__.'/.sid';
-    public function __construct($username,$password,$output='array')
+    /**
+     * initializing credentials and creating connection to server
+     *
+     * @param string $username      jsondb account username
+     * @param string $password      jsondb account password
+     * @param string $output        each function output type ('array','object','json')
+     * @return void
+     * https://github.com/es-taheri/JSONDB-LV#output-type
+     */
+    public function __construct(string $username,string $password,$output='array')
     {
         $this->username=$username;
         $this->password=$password;
@@ -24,6 +42,13 @@ class user{
             $_ENV['JSONDB_proxy'],
         );
     }
+    /**
+     * send a rapid login request to jsondb server/host
+     *
+     * @param boolean $save_session     should library save your session created for next times
+     * @return string|array|json|object if request successfully session id returned else error returned witch depends on your output selection in illuminating class
+     * @link https://github.com/es-taheri/JSONDB-LV#rapid-login
+     */
     public function rapid_login(bool $save_session=true)
     {
         $curl=new CURL($_ENV['JSONDB_address'],$_ENV['JSONDB_port']);
@@ -45,6 +70,13 @@ class user{
             return $curl->response;
         }
     }
+    /**
+     * send a login request to jsondb server/host
+     *
+     * @param boolean $save_session     should library save your session created for next times
+     * @return array|json|object        returned data depends on your output selection in illuminating class
+     * @link https://github.com/es-taheri/JSONDB-LV#login
+     */
     public function login(bool $save_session=true)
     {
         $result=$this->connection->send('user','login',['username'=>$this->username,'password'=>$this->password],'POST');
@@ -63,6 +95,13 @@ class user{
             return self::output($result,$this->output);
         }
     }
+    /**
+     * continue last login using last session id or entered session id
+     *
+     * @param string|null $session_id   if set this param library use it for each request and login else it will be check any valid session id saved from last requests
+     * @return array|json|object        returned data depends on your output selection in illuminating class
+     * @link https://github.com/es-taheri/JSONDB-LV#continue
+     */
     public function continue(string $session_id=null)
     {
         if(empty($session_id))$session_id=self::last_session();
@@ -86,11 +125,25 @@ class user{
             ],$this->output);
         }
     }
+    /**
+     * terminate current session id (if you use this function you must login again)
+     * @return array|json|object        returned data depends on your output selection in illuminating class
+     * @link https://github.com/es-taheri/JSONDB-LV#terminate
+     */
     public function terminate()
     {
         $result=$this->connection->send('user','terminate',[],'POST',['x-s-auth'=>@$this->session_id]);
         return self::output($result,$this->output);
     }
+    /**
+     * update current or another user info
+     *
+     * @param string|array $what        info you want to update it
+     * @param string|array $set         value you want to set to that info
+     * @param string|null $username     if you want to update another user info (you must have higher permission than target user)
+     * @return array|json|object        returned data depends on your output selection in illuminating class
+     * @link https://github.com/es-taheri/JSONDB-LV#update-user-info
+     */
     public function update(string|array $what,string|array $set,string $username=null)
     {
         if(is_array($what))$what=json::_out($what);
@@ -100,22 +153,56 @@ class user{
         $result=$this->connection->send('user','update',$params,'POST',['x-s-auth'=>@$this->session_id]);
         return self::output($result,$this->output);
     }
+    /**
+     * get current user info
+     *
+     * @param string|array $what        info you want to get it
+     * @return array|json|object        returned data depends on your output selection in illuminating class
+     * @link https://github.com/es-taheri/JSONDB-LV#get-user-info
+     */
     public function get(string|array $what)
     {
         if(is_array($what))$what=json::_out($what);
         $result=$this->connection->send('user','get',['what'=>$what],'POST',['x-s-auth'=>@$this->session_id]);
         return self::output($result,$this->output);
     }
+    /**
+     * create a new user
+     *
+     * @param string $username          jsondb account username
+     * @param string $password          jsondb account password
+     * @param string $type              permission type of new user ('admin','root')
+     * @param boolean $active           should user be active or disable
+     * @return array|json|object        returned data depends on your output selection in illuminating class
+     * @link https://github.com/es-taheri/JSONDB-LV#create-new-user
+     */
     public function create(string $username,string $password,string $type,bool $active=true)
     {
-        $result=$this->connection->send('user','create',['username'=>$username,'password'=>$password,'type'=>$type,'active'=>$active],'POST',['x-s-auth'=>@$this->session_id]);
+        $result=$this->connection->send('user','create',[
+            'username'=>$username,
+            'password'=>$password,
+            'type'=>$type,
+            'active'=>$active
+        ],'POST',['x-s-auth'=>@$this->session_id]);
         return self::output($result,$this->output);
     }
+    /**
+     * delete a user
+     *
+     * @param string $username          username of that user
+     * @return array|json|object        returned data depends on your output selection in illuminating class
+     * @link https://github.com/es-taheri/JSONDB-LV#delete-user
+     */
     public function delete(string $username)
     {
         $result=$this->connection->send('user','delete',['username'=>$username],'POST',['x-s-auth'=>@$this->session_id]);
         return self::output($result,$this->output);
     }
+    /**
+     * get last session id if exist and valid
+     *
+     * @return string|boolean           if session id exist and valid it will be returned else FALSE returned
+     */
     public static function last_session()
     {
         if(file_exists(self::_SSDIR_)){
@@ -140,9 +227,19 @@ class user{
             return false;
         }
     }
+    /**
+     * clear last session id saved
+     *
+     * @return boolean if no saved session id FALSE will be returned else TRUE will be returned
+     */
     private static function clear_session_cache()
     {
-        if(file_exists(self::_SSDIR_))unlink(self::_SSDIR_);
+        if(file_exists(self::_SSDIR_)):
+            unlink(self::_SSDIR_);
+            return true;
+        else:
+            return false;
+        endif;
     }
     private static function output(array $data,string $output_type='array')
     {
