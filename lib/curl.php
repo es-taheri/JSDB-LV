@@ -7,7 +7,7 @@ class CURL{
     {
         $this->ch=curl_init($address);
         curl_setopt($this->ch,CURLOPT_PORT,$port);
-        curl_setopt($this->ch,CURLOPT_SSL_VERIFYPEER,false);
+        // curl_setopt($this->ch,CURLOPT_SSL_VERIFYPEER,false);
         curl_setopt($this->ch,CURLOPT_RETURNTRANSFER,true);
         curl_setopt($this->ch,CURLOPT_PROTOCOLS,CURLPROTO_HTTPS);
         $this->address=$address;
