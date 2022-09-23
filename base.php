@@ -9,7 +9,6 @@ use JSONDB\lib\json;
  * This Class send asynchronously requests to jsondb server/host base section with "connect" class
  * 
  * @package    JSONDB-LV
- * @version    Release: v1.0-beta
  * @license    https://raw.githubusercontent.com/es-taheri/JSONDB-LV/JSONDB/LICENSE  MIT License
  * @link       https://github.com/es-taheri/JSONDB-LV#base-requests
  */
