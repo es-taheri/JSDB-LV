@@ -8,7 +8,6 @@ use JSONDB\lib\json;
  * This Class Provide your connection to jsondb server/host with curl and only accept https address
  * 
  * @package    JSONDB-LV
- * @version    Release: v1.0-beta
  * @license    https://raw.githubusercontent.com/es-taheri/JSONDB-LV/JSONDB/LICENSE  MIT License
  * @link       https://github.com/es-taheri/JSONDB-LV#create-connection
  */
