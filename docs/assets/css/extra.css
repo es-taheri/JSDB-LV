@@ -22,3 +22,12 @@
     /* --md-code-hl-name-color: #ebe727; */
     /* --md-code-hl-generic-color: #ebe727; */
   }
+@media (max-width: 767.98px){
+    .all-docs{
+        width: auto;
+    }
+    .all-docs .item{
+        width: 40%;
+        float: left;    
+    }
+}
