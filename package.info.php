@@ -10,7 +10,7 @@
  * @package    JSONDB-LV
  * @author     Esmaeil Taheri <ta.es1383@gmail.com>
  * @license    https://raw.githubusercontent.com/es-taheri/JSONDB-LV/JSONDB/LICENSE  MIT License
- * @version    Release: 1.0.1-beta
+ * @version    Release: 1.0.2-beta
  * @link       https://github.com/es-taheri/JSONDB-LV
  * @since      File available since Release v1.0
  */
@@ -23,7 +23,7 @@ class JSONDB{
         $this->package="JSONDB-LV";
         $this->author="Esmaeil Taheri <ta.es1383@gmail.com>";
         $this->license="https://raw.githubusercontent.com/es-taheri/JSONDB-LV/JSONDB/LICENSE  MIT License";
-        $this->version="Release: 1.0.1-beta";
+        $this->version="Release: 1.0.2-beta";
         $this->link="https://github.com/es-taheri/JSONDB-LV";
         $this->since="File available since Release v1.0";
     }
