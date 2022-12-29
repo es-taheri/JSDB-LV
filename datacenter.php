@@ -68,7 +68,7 @@ class datacenter
      * @param string|array $object              name of data you want to receive from record(s)
      * @param string|array|null $where_object   filtering records by  data name
      * @param string|array|null $where_value    filtering records by  data value
-     * @param integer|null $limit               limit number of records to update
+     * @param integer|null $limit               limit number of records to receive
      * @return array|json|object                returned data depends on your output selection in illuminating class (more details in link)
      * @link https://github.com/es-taheri/JSONDB-LV#receive-record
      */
