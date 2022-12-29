@@ -232,6 +232,18 @@
         
   
   
+
+
+  <li class="md-tabs__item">
+    <a href="../functions/" class="md-tabs__link">
+      Functions
+    </a>
+  </li>
+
+      
+        
+  
+  
     
   
 
@@ -325,6 +337,21 @@
     <li class="md-nav__item">
       <a href="../classes/" class="md-nav__link">
         Classes
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../functions/" class="md-nav__link">
+        Functions
       </a>
     </li>
   
@@ -571,7 +598,7 @@
 <h2 id="we-may-that-you-have">We may that you have<a class="headerlink" href="#we-may-that-you-have" title="Permanent link">&para;</a></h2>
 <ul>
 <li>installed this library before (<a href="../installation">Reference</a>)</li>
-<li>A ready to use JSONDB server with the following credentials <a href="../../JSONDB-LV/installation">installed</a> :<br/>
+<li>A ready to use JSONDB server with the following credentials <a href="/JSONDB-HV/installation">installed</a> :<br/>
 <strong>Address:</strong> jsondb.example.com<br/>
 <strong>Port:</strong> 443 (default https port)<br/>
 <strong>Username :</strong> root<br/>
@@ -582,7 +609,7 @@
 <h3 id="create-a-connection-to-server">Create a connection to server<a class="headerlink" href="#create-a-connection-to-server" title="Permanent link">&para;</a></h3>
 <details class="note">
 <summary>installed manually</summary>
-<p>if installed library manually, Replace line 3 with <code>require 'jsondb/jsondb.class.php';</code></p>
+<p>if installed library manually, Replace line 3 with <code>require __DIR__.'jsondb/jsondb.class.php';</code></p>
 </details>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-0-1"> 1</a></span>
 <span class="normal"><a href="#__codelineno-0-2"> 2</a></span>
@@ -599,7 +626,7 @@
 <span class="normal"><a href="#__codelineno-0-13">13</a></span>
 <span class="normal"><a href="#__codelineno-0-14">14</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1"></a><span class="cp">&lt;?php</span>
 <a id="__codelineno-0-2" name="__codelineno-0-2"></a><span class="c1">//requiring composer autoload</span>
-<a id="__codelineno-0-3" name="__codelineno-0-3"></a><span class="k">require</span> <span class="s1">&#39;vendor/autoload.php&#39;</span><span class="p">;</span>
+<a id="__codelineno-0-3" name="__codelineno-0-3"></a><span class="k">require</span> <span class="no">__DIR__</span><span class="o">.</span><span class="s1">&#39;/vendor/autoload.php&#39;</span><span class="p">;</span>
 <a id="__codelineno-0-4" name="__codelineno-0-4"></a><span class="c1">//load class from reference</span>
 <a id="__codelineno-0-5" name="__codelineno-0-5"></a><span class="k">use</span> <span class="nx">JSONDB\lib\connect</span><span class="p">;</span>
 <a id="__codelineno-0-6" name="__codelineno-0-6"></a>
@@ -723,9 +750,9 @@
 <h2 id="full-documentation">Full Documentation<a class="headerlink" href="#full-documentation" title="Permanent link">&para;</a></h2>
 <p>You can also use these references to see full documentation :</p>
 <p><a class="md-button md-button--primary" href="../classes">Classes <span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M10.537.904 6.602 12.04l4.798.037-3.748 11.018v.002L17.996 8.39h-5.022L17.847.903h-3.824zM6.903 4.91a.585.585 0 0 0-.412.17L.155 11.285a.682.682 0 0 0 0 .865l6.448 6.396a.625.625 0 0 0 .824 0 .638.638 0 0 0 0-.865l-5.436-5.53a.641.641 0 0 1 0-.865l5.324-5.344a.574.574 0 0 0 0-.865.586.586 0 0 0-.412-.169zm10.193 0a.585.585 0 0 0-.412.17.572.572 0 0 0 0 .864l5.435 5.343a.64.64 0 0 1 0 .866l-5.548 5.53a.64.64 0 0 0 0 .865.625.625 0 0 0 .824 0l6.45-6.396a.68.68 0 0 0 0-.865l-6.337-6.208a.585.585 0 0 0-.412-.169z"/></svg></span></a>
-<a class="md-button md-button--primary" href="method">Methods <span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M15.6 5.29c-1.1-.1-2.07.71-2.17 1.82L13.18 10H16v2h-3l-.44 5.07a3.986 3.986 0 0 1-4.33 3.63 4.007 4.007 0 0 1-3.06-1.87l1.5-1.5c.24.74.9 1.31 1.73 1.38 1.1.1 2.07-.71 2.17-1.82L11 12H8v-2h3.17l.27-3.07c.19-2.2 2.13-3.83 4.33-3.63 1.31.11 2.41.84 3.06 1.87l-1.5 1.5c-.24-.74-.9-1.31-1.73-1.38Z"/></svg></span></a>
-<a class="md-button md-button--primary" href="request">Requests <span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16"><path fill-rule="evenodd" d="M7.177 3.073 9.573.677A.25.25 0 0 1 10 .854v4.792a.25.25 0 0 1-.427.177L7.177 3.427a.25.25 0 0 1 0-.354zM3.75 2.5a.75.75 0 1 0 0 1.5.75.75 0 0 0 0-1.5zm-2.25.75a2.25 2.25 0 1 1 3 2.122v5.256a2.251 2.251 0 1 1-1.5 0V5.372A2.25 2.25 0 0 1 1.5 3.25zM11 2.5h-1V4h1a1 1 0 0 1 1 1v5.628a2.251 2.251 0 1 0 1.5 0V5A2.5 2.5 0 0 0 11 2.5zm1 10.25a.75.75 0 1 1 1.5 0 .75.75 0 0 1-1.5 0zM3.75 12a.75.75 0 1 0 0 1.5.75.75 0 0 0 0-1.5z"/></svg></span></a>
-<a class="md-button md-button--primary" href="response">Responses <span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M16 15H9v-2h7v2m3-4H9V9h10v2m0-4H9V5h10v2M3 5v16h16v2H3a2 2 0 0 1-2-2V5h2m18-4a2 2 0 0 1 2 2v14c0 1.11-.89 2-2 2H7a2 2 0 0 1-2-2V3c0-1.11.89-2 2-2h14M7 3v14h14V3H7Z"/></svg></span></a></p>
+<a class="md-button md-button--primary" href="../functions">Functions <span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M15.6 5.29c-1.1-.1-2.07.71-2.17 1.82L13.18 10H16v2h-3l-.44 5.07a3.986 3.986 0 0 1-4.33 3.63 4.007 4.007 0 0 1-3.06-1.87l1.5-1.5c.24.74.9 1.31 1.73 1.38 1.1.1 2.07-.71 2.17-1.82L11 12H8v-2h3.17l.27-3.07c.19-2.2 2.13-3.83 4.33-3.63 1.31.11 2.41.84 3.06 1.87l-1.5 1.5c-.24-.74-.9-1.31-1.73-1.38Z"/></svg></span></a>
+<a class="md-button md-button--primary" href="../request">Requests <span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16"><path fill-rule="evenodd" d="M7.177 3.073 9.573.677A.25.25 0 0 1 10 .854v4.792a.25.25 0 0 1-.427.177L7.177 3.427a.25.25 0 0 1 0-.354zM3.75 2.5a.75.75 0 1 0 0 1.5.75.75 0 0 0 0-1.5zm-2.25.75a2.25 2.25 0 1 1 3 2.122v5.256a2.251 2.251 0 1 1-1.5 0V5.372A2.25 2.25 0 0 1 1.5 3.25zM11 2.5h-1V4h1a1 1 0 0 1 1 1v5.628a2.251 2.251 0 1 0 1.5 0V5A2.5 2.5 0 0 0 11 2.5zm1 10.25a.75.75 0 1 1 1.5 0 .75.75 0 0 1-1.5 0zM3.75 12a.75.75 0 1 0 0 1.5.75.75 0 0 0 0-1.5z"/></svg></span></a>
+<a class="md-button md-button--primary" href="../response">Responses <span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M16 15H9v-2h7v2m3-4H9V9h10v2m0-4H9V5h10v2M3 5v16h16v2H3a2 2 0 0 1-2-2V5h2m18-4a2 2 0 0 1 2 2v14c0 1.11-.89 2-2 2H7a2 2 0 0 1-2-2V3c0-1.11.89-2 2-2h14M7 3v14h14V3H7Z"/></svg></span></a></p>
 <!-- [Configuration](#){ .md-button .md-button--primary } -->
 <blockquote>
 <p>If you want a specific method documents use search box on header!</p>
@@ -805,7 +832,7 @@
     <nav class="md-footer__inner md-grid" aria-label="Footer" >
       
         
-        <a href="../classes/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Classes" rel="prev">
+        <a href="../functions/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Functions" rel="prev">
           <div class="md-footer__button md-icon">
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
           </div>
@@ -814,7 +841,7 @@
               <span class="md-footer__direction">
                 Previous
               </span>
-              Classes
+              Functions
             </div>
           </div>
         </a>
